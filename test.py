@@ -20,8 +20,8 @@ def linear_solve(V, L_rho):
 
 S = np.load(path+'S_matrix.npy')
 b = np.load(path+'b.npy')
-V = np.load(path+'V.npy').astype(np.float64)
-L_rho = np.load(path+'L_rho.npy').astype(np.float64)
+V = np.load(path+'V.npy')
+L_rho = np.load(path+'L_rho.npy')
 
 print(S.shape)
 print(b.shape)
@@ -31,3 +31,4 @@ print(L_rho.shape)
 a = linear_solve(V,L_rho)
 
 print(np.linalg.norm(S @ a - b))
+

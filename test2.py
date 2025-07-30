@@ -31,7 +31,6 @@ def complex_linear_solve(V, L_rho):
     print("Residual norm for S @ a - b:",np.linalg.norm(S @ a - b))
     return np.real(a)
 
-
 # improved_linear_solve
 def improved_linear_solve(V, L_rho):
     # 直接对 V 和 L_rho 进行最小二乘求解
@@ -45,7 +44,6 @@ def improved_linear_solve(V, L_rho):
     print("Residual norm for V @ a - L_rho:", np.linalg.norm(V @ a - L_rho))
     return np.real(a)
 
-
 # improved_linear_solve
 def complex_improved_linear_solve(V, L_rho):
     a, residuals, rank, s = sp.linalg.lstsq(V, L_rho, lapack_driver='gelsy')
@@ -58,13 +56,11 @@ def complex_improved_linear_solve(V, L_rho):
     print("Rank of V:", rank)
     return a
 
-
 # 加载数据
 S = np.load(path+'S_matrix.npy').astype(np.complex128)
 b = np.load(path+'b.npy').astype(np.complex128)
 V = np.load(path+'V.npy').astype(np.complex128)
 L_rho = np.load(path+'L_rho.npy').astype(np.complex128)
-
 
 # print(S.shape)
 # print(b.shape)
@@ -76,10 +72,7 @@ print(np.linalg.norm(S @ a - b))
 
 x=complex_linear_solve(V, L_rho)
 
-
 y = improved_linear_solve(V, L_rho)
 print(np.linalg.norm(V @ x - L_rho))
-
-
 
 z=complex_improved_linear_solve(V, L_rho)
